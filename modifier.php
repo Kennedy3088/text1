@@ -1,9 +1,11 @@
 <?php
 include("config.php");
 
-id=$_GET['id'];
-var_dump($id);
-exit();
+$id = $_GET['id'];
+$sql = "SELECT * FROM utilisateur WHERE id_user=$id";
+$result = mysqli_query($conn, $sql);
+$user = mysqli_fetch_assoc($result);
+
 
 ?>
 
@@ -27,34 +29,34 @@ exit();
             <div class="row">
             <div class="col-md-6 mb-3">
                 <label for="nom">Nom:</label>
-                <input type="text" id="nom" class="form-control" name="nom" required>
+                <input type="text" id="nom" class="form-control" name="nom" value="<?= $user['nom']; ?>" required>
             </div>
 
             <div class="col-md-6 mb-3">
                 <label for="prenom">Prenom:</label>
-                <input type="text" id="prenom" class="form-control" name="prenom" required>
+                <input type="text" id="prenom" class="form-control" name="prenom" value="<?= $user['prenom']; ?>" required>
             </div>
             </div>            
 
         <div class="row">
         <div class="col-md-6 mb-3">
             <label for="telephone">Telephone:</label>
-            <input type="text" id="tel" class="form-control" name="tel" maxlength="10" required>
+            <input type="text" id="tel" class="form-control" name="tel" value="<?= $user['tel']; ?>" maxlength="10" required>
         </div>
         <div class="col-md-6 mb-3">
             <label for="email">Email:</label>
-            <input type="email" id="email" class="form-control" name="email" required>
+            <input type="email" id="email" class="form-control" name="email" value="<?= $user['email']; ?>"  required>
         </div>
         </div>
 
         <div class="row">
         <div class="col-md-6 ">
             <label for="passwordm">Mot de passe</label>
-            <input type="password" name="passwordm" class="form-control" id="passwordm"  required>
+            <input type="password" name="passwordm" class="form-control" value="<?= $user['passwordm']; ?>" id="passwordm"  required>
         </div>
         <div class="col-md-6 mb-3">
             <label for="nbre_anne">Nombre d'années:</label>
-            <input type="number" id="nbre_anne" class="form-control" name="nbre_anne" required>
+            <input type="number" id="nbre_anne" class="form-control" name="nbre_anne" value="<?= $user['nbre_anne']; ?>" required>
         </div>
         </div>
 
