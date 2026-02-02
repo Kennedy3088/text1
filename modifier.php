@@ -6,6 +6,25 @@ $sql = "SELECT * FROM utilisateur WHERE id_user=$id";
 $result = mysqli_query($conn, $sql);
 $user = mysqli_fetch_assoc($result);
 
+if(isset($_POST['modifier']))
+{
+    $nom=$_POST['nom'];
+    $prenom=$_POST['prenom'];
+    $tel=$_POST['tel'];
+    $email=$_POST['email'];
+    $passwordm=$_POST['passwordm'];
+    $nbre_anne=$_POST['nbre_anne'];
+    $fonction=$_POST['fonction'];
+
+
+
+    $sql = "UPDATE utilisateur SET nom='$nom', prenom='$prenom', tel='$tel', 
+    email='$email', passwordm='$passwordm', nbre_anne='$nbre_anne', fonction='$fonction' WHERE id_user=$id";
+    mysqli_query($conn, $sql);
+    header("location:tableau.php");
+    exit;
+
+}
 
 ?>
 
@@ -65,11 +84,16 @@ $user = mysqli_fetch_assoc($result);
 
         <div class="col-md-6 mb-3">
             <label for="photo">photo:</label>
-            <input type="file" src="" alt="image" id="photo" class="form-control" name="photo" >
+            <input type="file" src="" alt="image" id="photo" class="form-control" name="photo" value="<?= $user['photo']; ?>" >
+        </div>
+
+        <div class="col-md-6 mb-3">
+            <label for="photo">fonction:</label>
+            <input type="text" src="" alt="image" id="fonction" class="form-control" value="<?= $user['fonction']; ?>" name="fonction" >
         </div>
         </div>
         <div class="row">
-        <button type="submit" name="enregistre"class="btn btn-primary w-100 mt-3">Modifier</button>
+        <button type="submit" name="modifier" class="btn btn-primary w-100 mt-3">Modifier</button>
         </div>
         </div>
     </form>

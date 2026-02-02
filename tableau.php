@@ -19,6 +19,10 @@ $result = mysqli_query($conn, $sql);
 
     <table class="table table-bordered table-striped table-hover text-center">
         <thead class="table-secondary">
+            <div class="form-control">
+            <a href="deconnection.php" class="btn btn-primary">Se deconnecter</a>
+            <a href="enregistrement.php" class="btn btn-primary">inserer</a>
+            </div>
             <tr>
                 <th>nom</th>
                 <th>Prenom</th>
@@ -26,6 +30,8 @@ $result = mysqli_query($conn, $sql);
                 <th>email</th>
                 <th>passwordm</th>
                 <th>nbre_anne</th>
+                <th>fonction</th>
+                <th>photo</th>
                 <th><center>action</center></th>
             </tr>
         </thead>
@@ -38,10 +44,12 @@ $result = mysqli_query($conn, $sql);
                     <td><?= $p['email']; ?></td>
                     <td><?= $p['passwordm']; ?></td>
                     <td><?= $p['nbre_anne']; ?></td>
+                    <td><?= $p['fonction']; ?></td>
+                    <td><img src="<?= $p['photo']; ?>" alt="" width="50" height="50"></td>
                     <td>
                         <div style="text-align: center;">
                             <a href="modifier.php?id=<?= $p['id_user']; ?>" class="btn btn-primary">Modifier</a>
-                            <a href="" class="btn btn-danger">Supprimer</a>
+                            <a href="delete.php?id=<?= $p['id_user']; ?>" class="btn btn-danger">Supprimer</a>
                         </div>
                     </td>
                 </tr>
